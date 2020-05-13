@@ -70,6 +70,7 @@ export class HomeComponent implements OnInit {
       this.GetEps();
       this.showSuccess("Se agrego el registro","Agregar")
       this.closeModal();
+      this.insertEps = {} as EPS;
     }, error=>{
       if(error.statusText == "Unknown Error"){
         this.showError("Cierre la sesión e ingrese de nuevo","Error");
@@ -96,6 +97,7 @@ export class HomeComponent implements OnInit {
       this.closeModal();
       this.showSuccess("Se actualizo el registro","Actualizar")
       this.GetEps();
+      this.updateEps = {} as EPS;
     }, error=>{
       if(error.statusText == "Unknown Error"){
         this.showError("Cierre la sesión e ingrese de nuevo","Error");
@@ -121,6 +123,7 @@ export class HomeComponent implements OnInit {
     this.api.DeleteEps(this.deleteEps).subscribe((data)=>{
         this.closeModal();
         this.GetEps();
+        this.deleteEps = {} as EPS;
         this.showSuccess("Se elimino el registro","Eliminar")
     }, error=>{
       if(error.statusText == "Unknown Error"){
