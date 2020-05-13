@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit {
       }else{
         this.showError(error.error,"Error");
       }
-
+      this.insertEps = {} as EPS;
       this.closeModal();
     })
   }
@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit {
       }else{
         this.showError(error.error,"Error");
       }
-
+      this.updateEps = {} as EPS;
       this.closeModal();
     })
   }
@@ -131,7 +131,7 @@ export class HomeComponent implements OnInit {
       }else{
         this.showError(error.error,"Error");
       }
-
+      this.updateEps = {} as EPS;
       this.closeModal();
     })
   }
