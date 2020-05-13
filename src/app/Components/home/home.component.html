@@ -1,0 +1,133 @@
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-brand mb-0 h1">Tecnoevolucion</span>
+  <span class="navbar-text">
+    <button type="button" (click)="CloseSession()" class="btn btn-dark">Cerrar sesión</button>
+
+  </span>
+</nav>
+
+<div class="container" style="margin-top: 20px;">
+
+  <div class="row">
+    <div class="col-md-6">
+      <button type="button" class="btn btn-dark" (click)="open(insert)">Agregar</button>
+    </div>
+  </div>
+
+  <table class="table" style="margin-top: 20px;">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nit</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Ministerio</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of ListEps">
+        <th scope="row">{{item.consecutivo}}</th>
+        <td>{{item.nit}}</td>
+        <td>{{item.nombre}}</td>
+        <td>{{item.codigoMinisterio}}</td>
+        <td>
+          <button class="btn btn-primary" (click)="UpdateEps(item)">
+            <fa-icon [icon]="updateIco"></fa-icon>
+          </button>
+          <button class="btn btn-danger" (click)="DeleteEps(item)">
+            <fa-icon [icon]="deleteIco"></fa-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<ng-template #update let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Actualizar Registro</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="Consecutivo">Consecutivo</label>
+        <input type="text" class="form-control" id="Consecutivo" disabled="disabled" [(ngModel)]="updateEps.consecutivo"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label for="Nit">Nit</label>
+        <input type="text" class="form-control" id="Nit" [(ngModel)]="updateEps.nit"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label for="Nombre">Nombre</label>
+        <input type="text" class="form-control" id="Nombre" [(ngModel)]="updateEps.nombre"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label for="Ministerio">Ministerio</label>
+        <input type="text" class="form-control" id="Ministerio" [(ngModel)]="updateEps.codigoMinisterio"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-dark" (click)="ConfirmUpdate()">Actualizar</button>
+  </div>
+</ng-template>
+
+<ng-template #insert let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Nuevo Registro</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group" hidden="hidden"><label for="Consecutivo">Consecutivo</label>
+        <input type="text" class="form-control" id="Consecutivo" disabled="disabled" [(ngModel)]="insertEps.consecutivo"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label for="Nit">Nit</label>
+        <input type="text" class="form-control" id="Nit" [(ngModel)]="insertEps.nit"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label for="Nombre">Nombre</label>
+        <input type="text" class="form-control" id="Nombre" [(ngModel)]="insertEps.nombre"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label for="Ministerio">Ministerio</label>
+        <input type="text" class="form-control" id="Ministerio" [(ngModel)]="insertEps.codigoMinisterio"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-dark" (click)="ConfirmInsert()">Agregar</button>
+  </div>
+</ng-template>
+
+<ng-template #delete let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Eliminar Registro</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <h3>¿Seguro que quiere eliminar {{deleteEps.nombre}}?</h3>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="ConfirmDelete()">Si</button>
+    <button type="button" class="btn btn-dark" (click)="closeModal()">No</button>
+  </div>
+</ng-template>

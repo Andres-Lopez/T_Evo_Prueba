@@ -1,0 +1,16 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <hr>
+    <h2>Iniciar sesión</h2>
+    <hr>
+    <!-- Login Form -->
+    <form [formGroup]="loginForm">
+      <input type="text" formControlName="username" class="fadeIn second" name="login" placeholder="Usuario">
+      <input type="password" formControlName="password" class="fadeIn third" name="login" placeholder="Contraseña">
+      <input type="submit" class="fadeIn fourth" (click)="Login()" value="Ingresar">
+    </form>
+  </div>
+
+
+
+</div>
